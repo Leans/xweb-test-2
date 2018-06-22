@@ -90,7 +90,8 @@ public class Comparador {
     }
     
 	/**
-	 * Metodo para ejecutar el algoritmo de comparacion de imagenes. Compara dos imagenes.
+	 * Metodo para ejecutar el algoritmo de comparacion de imagenes pixel a matriz de pixeles.
+	 * Compara dos imagenes.
 	 * Se recibe como parametros de entrada las dos imagenes, de tipo Imagen.
 	 * Devuelve un resultado de tipo Resultado.
 	 */
@@ -103,9 +104,9 @@ public class Comparador {
         //se definen variables para usar en el algoritmo de comparacion de pixeles
         boolean resultado = true;
         Resultado resultadoFinal;
-        //la cantidad de pixeles comparados
+        //contador de la cantidad de pixeles comparados
         int pxTotal = 0;
-        //pxDiff cuenta la cantidad de pixeles diferentes encontrados en la comparacion de pixeles
+        //contador de la cantidad de pixeles diferentes encontrados en la comparacion
         int pxDiff = 0;
         BufferedImage mapaDeCalor = null;
         int imagen1Ancho = imagen1.getWidth();
@@ -148,7 +149,7 @@ public class Comparador {
                 				//se hace la comparacion de pixel a pixel
                 				Pixel pixel1 = new Pixel(imagen1.getRGB(x, y));
                 				Pixel pixel2 = new Pixel(imagen2.getRGB(i, j));
-                				//si el pixel (x;y) en imagen1 es igual del pixel (i;j) en la submatriz de imagen2
+                				//si el pixel (x;y) en imagen1 es igual al pixel (i;j) en la submatriz de imagen2
                 				if (pixel1.compararParPixeles(pixel2, toleranciaRGB)) {
                 					//se ha encontrado un pixel igual al pixel (x;y) en la submatriz
                 					exito = true;

@@ -37,7 +37,7 @@ public class Navegador {
 		
 		//si el string ingresado es IE
 		if (browserName.equalsIgnoreCase(Navegadores.IE)) {
-			//se define la ruta al iedriver.exe, el webdrver de internet explorer
+			//se define la ruta al iedriver.exe, el webdriver de internet explorer
 			System.setProperty("webdriver.ie.driver", "C:\\browser-drivers\\iedriver86\\IEDriverServer.exe");
 			//creo un profile nuevo
 			DesiredCapabilities dc = DesiredCapabilities.internetExplorer();

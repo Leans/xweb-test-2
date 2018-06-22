@@ -18,7 +18,7 @@ public class Utils {
 	/**
 	 * Metodo de clase que devuelve un string con la concatenacion 
 	 * de valores del instante de tiempo en que se llama el metodo.
-	 * Se concatenan los valores de: dia, mes, anio, hora, minuto, segundo 
+	 * Se concatenan los valores de: dia, mes, anio, hora, minuto, segundo.
 	 */
     public static String getFecha() {    
             Date d = new Date();
@@ -76,7 +76,7 @@ public class Utils {
      * dos strings con los nombres de los dos navegadores comparados;
      * un string con el nombre de la prueba;
      * un string con la hora y fecha de ejecucion;
-     * un integer, cantidad de pixeles iguales?
+     * un integer, cantidad de pixeles iguales,
      * un integer, cantidad de pixeles diferentes,
      * un double porcentajePxDiff, porcentaje de pixeles diferentes.
      * Devuelve un boolean, sera true si se genera el reporte correctamente, sino devuelve false.
@@ -91,7 +91,7 @@ public class Utils {
             
             String ruta = System.getenv("RUTA");
             		
-            //almacena el contenido de una plantilla reporte en un archivo File
+            //almacena el contenido de una plantilla del reporte en un archivo File
             File templateReportes =  new File(ruta + "//utils//templateJarReportes.html");
             //almacena el contenido del archivo File en un string
             String htmlString = FileUtils.readFileToString(templateReportes, Charset.forName("utf-8"));
@@ -125,7 +125,7 @@ public class Utils {
     }
     
     /**
-     * Metodo para mostrar una ventana d error con un mensaje recibido como parametro de entrada
+     * Metodo para mostrar una ventana de error con un mensaje recibido como parametro de entrada
      */
     public static void mostrarPopupError(String mensaje){
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
@@ -175,7 +175,7 @@ public class Utils {
     
     	//switch
         if(mensaje.toUpperCase().contains("CHROME"))
-            return "El archivo Chromedriver.exe no se encuentra instalado.";
+            return "El archivo Chromedriver.exe no se encuentra instalado en el sistema.";
         
         if(mensaje.toUpperCase().contains("FIREFOX"))
             return "El navegador firefox no se encuntra instalado en el sistema.";
@@ -184,7 +184,7 @@ public class Utils {
             return "La versión del navegador Internet Explorer debe ser igual o inferior a la 10 ";
         
         if(mensaje.toUpperCase().contains("IEDRIVER"))
-            return "El archivo iedriver.exe no se encuentra instalado.";
+            return "El archivo iedriver.exe no se encuentra instalado en el sistema.";
         
         if(mensaje.toUpperCase().contains("OPERA"))
             return "El navegador Opera no se encuntra instalado en el sistema.";

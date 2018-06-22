@@ -20,7 +20,7 @@ public class Imagen {
     /**
     * Constructor de la clase Imagen. 
     * Parametros de entrada: tipo de la imagen, cantidad de pixeles,
-    * ancho, alto, el nombre del navegador al que corresponde
+    * ancho, alto, el nombre del navegador al que corresponde.
     */
     public Imagen(String tipoImagen, int cantPixeles, int ancho, int alto, String nombreNavegador) {
         this.tipoImagen = tipoImagen;

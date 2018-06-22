@@ -63,6 +63,7 @@ public class Resultado {
 		try {
 			//si la prueba ha sido exitosa
 			if (this.resultado == true) {
+				System.out.println("1");
 				BufferedImage exito = ImageIO.read(new File("C:\\che\\utils\\exito.png"));
 				ImageIO.write(exito, "png", new File(path));
 				return;
@@ -70,16 +71,17 @@ public class Resultado {
 
 			//si la prueba ha fallado
 			if ((this.resultado == false) && (this.mapaDeCalor == null)) {
+				System.out.println("2");
 				BufferedImage fallo = ImageIO.read(new File("C:\\che\\utils\\fallo.png"));
 				ImageIO.write(fallo, "png", new File(path));
 				return;
 			}
 
 			if ((this.resultado == false) && (this.mapaDeCalor != null)) {
-
+				System.out.println("3");
 				ImageIO.write(this.mapaDeCalor, "png", new File(path));
-
 			}
+			
 		} catch (IOException ex) {
 			System.out.println("Error de entrada/salida");
 			System.out.println("No se puede guardar la imagen en la ruta especificada: " + path);

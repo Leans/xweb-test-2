@@ -80,8 +80,8 @@ public class Manipulador {
             tituloDir = titulo.trim();
         }
         
-        //se asigna al path (variable de instancia) la concatenacion de:
-        //la ruta (variable de instancia), el string de fecha (variable de instancia), el tituloDir recien creado
+        //se asigna al path (variable de instancia) la concatenacion de: la ruta (variable de instancia), 
+        //el string de fecha (variable de instancia) y el tituloDir recien creado
         this.path = ruta + this.fecha + " - " + tituloDir + "//";
         
         //se crea una carpeta en ese path
@@ -101,7 +101,7 @@ public class Manipulador {
             
             //fija un retraso de tiempo para contemplar la carga de la pagina en el navegador
             Thread.sleep(10000);
-            //bueca un elemento por tagName, el body, le hace click
+            //busca un elemento por tagName, el body, le hace click
             navegador.findElement(By.tagName("body")).click();
 
             //se utiliza el robot para sacar la captura de pantalla
@@ -147,18 +147,11 @@ public class Manipulador {
     public Imagen capturarPantallaFullscreen(WebDriver navegador){
         
         try {
-        	//se maximiza la ventana del navegador
-            //navegador.manage().window().maximize(); //manipula el navegador
             
             //fija un retraso de tiempo para contemplar la carga de la pagina en el navegador
             Thread.sleep(4000);
             //busca un elemento por tagName, el body, le hace click
             navegador.findElement(By.tagName("body")).click();
-            
-            //crea un nuevo objeto action de tipo Actions (para poner el navegador en modo pantalla completa)
-            //Actions action = new Actions(navegador);
-            //envia el presionado de la tecla F11 al objeto action (F11 = pantalla completa)
-            //action.sendKeys(Keys.F11).perform();
             
             //se utiliza el robot para sacar la captura de pantalla
             Robot robot = new Robot(); //maneja mi compu
@@ -176,6 +169,7 @@ public class Manipulador {
     			//se presiona la tecla F11 (Fullscreen)
     			robot.keyPress(KeyEvent.VK_F11);
     			robot.keyRelease(KeyEvent.VK_F11);
+    			//retraso hasta que desaparezca el aviso del navegador del modo fullscreen
     			Thread.sleep(5000);
     		} catch (AWTException | InterruptedException e) {
     			e.printStackTrace();
@@ -286,7 +280,6 @@ public class Manipulador {
                 resultado.getCantPixTotal() - resultado.getCantPixDiferentes(), //cantidad de pixeles iguales
                 resultado.getCantPixDiferentes(), 								//cantidad de pixeles diferentes
                 resultado.getPorcentajePxDiff());								//porcentaje de pixeles diferentes
-        		
     }
 
 }
