@@ -25,7 +25,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class Manipulador {
     
 	//variables de instancia
-    private final String ruta = System.getenv("RUTA") + "\\tmp\\";
+    private String ruta = "C:\\xtest";
     private String nombrePrueba;
     private String fecha;
     private String path;
@@ -34,13 +34,13 @@ public class Manipulador {
      * Constructor de Manipulador. 
      * Parametro de entrada: string con el nombre del proyecto.
      */
-    public Manipulador(String nombreProyecto) {
+    public Manipulador(String nombreProyecto, String ruta) {
     	
-    	//se crea la carpeta tmp
-        Utils.crearCarpetaTMP();
+    	//se crea la carpeta tmp en la ruta especificada para el programa
+        Utils.crearCarpetaTMP(ruta);
         this.nombrePrueba = nombreProyecto;
         //se crea una carpeta con el nombre de la prueba (nombre del proyecto), dentro de la carpeta tmp
-        this.crearCarpeta(this.ruta, this.nombrePrueba);   
+        this.crearCarpeta(this.ruta + "\\tmp\\", this.nombrePrueba);   
     }
     
     /**
@@ -282,7 +282,16 @@ public class Manipulador {
                 resultado.getCantPixDiferentes(), 								//cantidad de pixeles diferentes
                 resultado.getPorcentajePxDiff(),								//porcentaje de pixeles diferentes
                 resultado.getDelta(),
-                resultado.getToleranciaRGB());
+                resultado.getToleranciaRGB(),
+                this.ruta);
     }
 
+	public String getRute() {
+		return ruta;
+	}
+
+	public void setRute(String ruta) {
+		this.ruta = ruta;
+	}
+	
 }

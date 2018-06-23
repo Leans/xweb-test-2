@@ -17,7 +17,7 @@ import analisisVisual.Resultado;
 public class PruebaXChromeOpera {
 	public static void main(String[] args) {
 
-		Manipulador manipulador = new Manipulador("Prueba 2 Google - Chrome-Opera");
+		Manipulador manipulador = new Manipulador("Prueba Google - Chrome-Opera", "C:\\xtest");
 
 		//CHROME
 		System.setProperty("webdriver.chrome.driver", "C:\\browser-drivers\\chromedriver\\chromedriver.exe");

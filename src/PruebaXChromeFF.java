@@ -24,7 +24,7 @@ import analisisVisual.Resultado;
 public class PruebaXChromeFF {
 	public static void main(String[] args) {
 		
-		Manipulador manipulador = new Manipulador("Prueba 2 Google - Chrome-Firefox");
+		Manipulador manipulador = new Manipulador("Prueba Google - Chrome-Firefox", "C:\\xtest");
 
 		//CHROME
 		System.setProperty("webdriver.chrome.driver", "C:\\browser-drivers\\chromedriver\\chromedriver.exe");
@@ -57,8 +57,8 @@ public class PruebaXChromeFF {
 		
 		//ejecuta la comparacion pixel a matriz de pixeles
 		//se envian las dos imagenes, los valores de delta y toleranciaRGB
-		Resultado resultado1 = manipulador.compararImagenesPixAMatrizPix(img1, img2, 4, 25);
+		Resultado resultado1 = manipulador.compararImagenesPixAMatrizPix(img1, img2, 4, 40);
 		//crea el reporte con los resultados
-		manipulador.crearReporte(resultado1);		
+		manipulador.crearReporte(resultado1);
 	}
 }

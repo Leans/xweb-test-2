@@ -14,7 +14,7 @@ import analisisVisual.Resultado;
 public class PruebaXChromeIE {
 	public static void main(String[] args) {
 
-		Manipulador manipulador = new Manipulador("Prueba 2 Google - Chrome-IE");
+		Manipulador manipulador = new Manipulador("Prueba Google - Chrome-IE", "C:\\xtest");
 
 		//CHROME
 		System.setProperty("webdriver.chrome.driver", "C:\\browser-drivers\\chromedriver\\chromedriver.exe");

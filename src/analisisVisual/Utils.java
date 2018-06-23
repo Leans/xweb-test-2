@@ -40,10 +40,11 @@ public class Utils {
     /**
     * Metodo de clase que crea una carpeta temporal llamada "tmp"
     * en la ruta especificada para la herramienta.
+     * @param ruta 
     */
-    public static void crearCarpetaTMP() {
+    public static void crearCarpetaTMP(String ruta) {
     	//se define la ruta para la carpeta del programa
-        File carpeta = new File(System.getenv("RUTA"));
+        File carpeta = new File(ruta);
         
         //si no existe la carpeta en la ruta de destino
         if(!carpeta.exists()) {
@@ -82,16 +83,17 @@ public class Utils {
      * Devuelve un boolean, sera true si se genera el reporte correctamente, sino devuelve false.
      * @param toleranciaRGB 
      * @param delta 
+     * @param p_ruta 
      */
     //@SuppressWarnings("deprecation")
 	public static boolean crearReporte(String path, String browser1, String browser2, String nombre, 
-			String fecha, int pxIgual, int pixDiff, double porcentajePxDiff, int delta, int toleranciaRGB) {
+			String fecha, int pxIgual, int pixDiff, double porcentajePxDiff, int delta, int toleranciaRGB, String p_ruta) {
         
         try {
         	//define un string con la fecha y hora
             String fechaYhora = "Fecha: " + fecha.replaceAll(" ", " - Hora: ");
             
-            String ruta = System.getenv("RUTA");
+            String ruta = p_ruta;
             		
             //almacena el contenido de una plantilla del reporte en un archivo File
             File templateReportes =  new File(ruta + "//utils//templateJarReportes.html");
