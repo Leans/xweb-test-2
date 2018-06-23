@@ -233,7 +233,7 @@ public class Manipulador {
     public Resultado compararImagenes(Imagen imagen1, Imagen imagen2) {
     	
     	//crea un nuevo comparador de tipo Comparador para ejecutar el algoritmo de comparacion de imagenes
-        Comparador comparador = new Comparador();
+        Comparador comparador = new Comparador(0, 0);
         
         //ejecuta el algoritmo de comparacion sobre las dos imagenes recibidas como parametro de entrada
         Resultado resultado = comparador.ejecutarAlgoritmoDeComparacion(imagen1, imagen2);
@@ -246,13 +246,14 @@ public class Manipulador {
     
     /**
      * Metodo que compara dos imagenes con el algoritmo de comparacion de pixeles a matriz de pixeles.
-     * Recibe como parametros de entrada: las imagenes de tipo Imagen: imagen1 y imagen2.
+     * Recibe como parametros de entrada: las imagenes de tipo Imagen: imagen1 y imagen2,
+     * un int delta para la matriz, un int toleranciaRGB para comparacion de pixeles.
      * Devuelve un resultado de tipo Resultado.
      */
-    public Resultado compararImagenesPixAMatrizPix(Imagen imagen1, Imagen imagen2) {
+    public Resultado compararImagenesPixAMatrizPix(Imagen imagen1, Imagen imagen2, int delta, int toleranciaRGB) {
     	
     	//crea un nuevo comparador de tipo Comparador para ejecutar el algoritmo de comparacion de imagenes
-        Comparador comparador = new Comparador();
+        Comparador comparador = new Comparador(delta, toleranciaRGB);
         
         //ejecuta el algoritmo de comparacion sobre las dos imagenes recibidas como parametro de entrada
         Resultado resultado = comparador.comparacionPixAMatrizPix(imagen1, imagen2);
@@ -279,7 +280,9 @@ public class Manipulador {
                 this.fecha, 
                 resultado.getCantPixTotal() - resultado.getCantPixDiferentes(), //cantidad de pixeles iguales
                 resultado.getCantPixDiferentes(), 								//cantidad de pixeles diferentes
-                resultado.getPorcentajePxDiff());								//porcentaje de pixeles diferentes
+                resultado.getPorcentajePxDiff(),								//porcentaje de pixeles diferentes
+                resultado.getDelta(),
+                resultado.getToleranciaRGB());
     }
 
 }

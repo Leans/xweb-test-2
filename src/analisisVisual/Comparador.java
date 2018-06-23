@@ -7,11 +7,27 @@ import java.text.DecimalFormat;
 /**
  *Clase Comparador.
  */
-public class Comparador {    
+public class Comparador {
+	
+	//margen de tolerancia, afecta el tamaño de la submatriz
+	private int delta = 0;
+	//usado en la comparacion de pixeles, ajusta los valores de canales RGB
+	private int toleranciaRGB = 0;
+	
+	/**
+	 * Contructor de Comparador.
+	 * Parametros de entrada: int delta, int tolerancia RGB.
+	 * @param delta
+	 * @param toleranciaRGB
+	 */
+	public Comparador(int delta, int toleranciaRGB) {
+		this.setDelta(delta);
+		this.setToleranciaRGB(toleranciaRGB);
+	}
     
 	/**
 	 * Metodo para ejecutar el algoritmo de comparacion de imagenes. Compara dos imagenes.
-	 * Se recibe como parametros de entrada las dos imagenes, de tipo Imagen.
+	 * Parametros de entrada: las dos imagenes, de tipo Imagen.
 	 * Devuelve un resultado de tipo Resultado.
 	 */
     public Resultado ejecutarAlgoritmoDeComparacion(Imagen img1, Imagen img2) {
@@ -123,10 +139,6 @@ public class Comparador {
         	int j;
         	int imax;		//ancho de la submatriz
         	int jmax;		//alto de la submatriz
-        	//margen de tolerancia, afecta el tamaño de la submatriz
-        	int delta = Integer.valueOf(System.getenv("DELTA"));        	
-        	//usado en la comparacion de pixeles, ajusta los valores de canales RGB
-        	int toleranciaRGB = Integer.valueOf(System.getenv("TOLERANCIA_RGB"));
         	boolean exito;
         	pxTotal = imagen1Ancho*imagen1Alto;
         	
@@ -182,7 +194,7 @@ public class Comparador {
         //se crea un objeto resultadoFinal de tipo Resultado, 
         //con la informacion obtenida por el algoritmo de comparacion
         resultadoFinal = new Resultado(resultado, pxDiff, pxTotal, img1.getNombreNavegador(), 
-        		img2.getNombreNavegador(), mapaDeCalor, porcentajePixDiff);
+        		img2.getNombreNavegador(), mapaDeCalor, porcentajePixDiff, delta, toleranciaRGB);
         
         return resultadoFinal;
     }
@@ -224,5 +236,20 @@ public class Comparador {
     	}    	
     	return comparacion;
     }
-    
+
+	public int getDelta() {
+		return delta;
+	}
+
+	public void setDelta(int delta) {
+		this.delta = delta;
+	}
+
+	public int getToleranciaRGB() {
+		return toleranciaRGB;
+	}
+
+	public void setToleranciaRGB(int toleranciaRGB) {
+		this.toleranciaRGB = toleranciaRGB;
+	}   
 }

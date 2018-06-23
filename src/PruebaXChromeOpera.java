@@ -1,30 +1,23 @@
+import java.io.File;
 
-
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 
 import analisisVisual.Imagen;
 import analisisVisual.Manipulador;
 import analisisVisual.Resultado;
 
 /**
- * Prueba para Chrome y Firefox, con www.google.com
+ * Prueba para Chrome y Opera, con www.google.com
  */
-public class PruebaXChromeFF {
+public class PruebaXChromeOpera {
 	public static void main(String[] args) {
-		
-		Manipulador manipulador = new Manipulador("Prueba 2 Google - Chrome-Firefox");
+
+		Manipulador manipulador = new Manipulador("Prueba 2 Google - Chrome-Opera");
 
 		//CHROME
 		System.setProperty("webdriver.chrome.driver", "C:\\browser-drivers\\chromedriver\\chromedriver.exe");
@@ -43,22 +36,23 @@ public class PruebaXChromeFF {
 		Imagen img1 = manipulador.capturarPantallaFullscreen(chromeDriver);
 		chromeDriver.close();
 
-		//FIREFOX
-		System.setProperty("webdriver.gecko.driver","C:\\browser-drivers\\geckodriver\\geckodriver.exe");
+		//OPERA
+		System.setProperty("webdriver.opera.driver","C:\\browser-drivers\\operadriver\\operadriver.exe");
 		
-		//crea el WebDriver para firefox
-		WebDriver firefoxDriver= new FirefoxDriver();
+		OperaOptions operaOptions = new OperaOptions();
+		operaOptions.setBinary(new File("C:\\Program Files\\Opera\\53.0.2907.99\\opera.exe"));
 		
-		//abre la pagina en firefox
-		firefoxDriver.get("https://www.google.com");
-		//realiza la captura de pantalla
-		Imagen img2 = manipulador.capturarPantallaFullscreen(firefoxDriver);
-		firefoxDriver.close();
+		//crea el WebDriver para opera
+		WebDriver operaDriver = new OperaDriver(operaOptions);
+		
+		operaDriver.get("https://www.google.com");
+		Imagen img2 = manipulador.capturarPantallaFullscreen(operaDriver);
 		
 		//ejecuta la comparacion pixel a matriz de pixeles
 		//se envian las dos imagenes, los valores de delta y toleranciaRGB
 		Resultado resultado1 = manipulador.compararImagenesPixAMatrizPix(img1, img2, 4, 25);
-		//crea el reporte con los resultados
-		manipulador.crearReporte(resultado1);		
+		manipulador.crearReporte(resultado1);
+		
+		operaDriver.close();
 	}
 }

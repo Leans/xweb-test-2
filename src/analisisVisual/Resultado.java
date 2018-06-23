@@ -19,6 +19,8 @@ public class Resultado {
 	private String navegador2;
 	private BufferedImage mapaDeCalor;
 	private double PorcentajePxDiff;
+	private int delta = 0;
+	private int toleranciaRGB = 0;
 
 	/**
 	 * Constructor de Resultado. Recibe como parametros de entrada: un boolean, integer con la cantidad de pixeles diferentes,
@@ -43,7 +45,7 @@ public class Resultado {
 	 * un BufferedImage (con la imagen-mapa de calor), un int con el porcentaje de pixeles diferentes
 	 */
 	public Resultado(boolean resultado, int cantPixDiferentes, int cantPixTotal, String navegador1, String navegador2,
-			BufferedImage mapaDeCalor, double porcentajePixDiff) {
+			BufferedImage mapaDeCalor, double porcentajePixDiff, int delta, int toleranciaRGB) {
 		this.resultado = resultado;
 		this.cantPixDiferentes = cantPixDiferentes;
 		this.cantPixTotal = cantPixTotal;
@@ -52,6 +54,8 @@ public class Resultado {
 		this.mapaDeCalor = mapaDeCalor;
 		System.out.println(mapaDeCalor);
 		this.setPorcentajePxDiff(porcentajePixDiff);
+		this.setDelta(delta);
+		this.setToleranciaRGB(toleranciaRGB);
 	}
 
 	/**
@@ -168,6 +172,22 @@ public class Resultado {
 
 	public void setPorcentajePxDiff(double porcentajePixDiff) {
 		PorcentajePxDiff = porcentajePixDiff;
+	}
+
+	public int getDelta() {
+		return delta;
+	}
+
+	public void setDelta(int delta) {
+		this.delta = delta;
+	}
+
+	public int getToleranciaRGB() {
+		return toleranciaRGB;
+	}
+
+	public void setToleranciaRGB(int toleranciaRGB) {
+		this.toleranciaRGB = toleranciaRGB;
 	}
 
 }

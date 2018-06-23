@@ -80,10 +80,12 @@ public class Utils {
      * un integer, cantidad de pixeles diferentes,
      * un double porcentajePxDiff, porcentaje de pixeles diferentes.
      * Devuelve un boolean, sera true si se genera el reporte correctamente, sino devuelve false.
+     * @param toleranciaRGB 
+     * @param delta 
      */
     //@SuppressWarnings("deprecation")
 	public static boolean crearReporte(String path, String browser1, String browser2, String nombre, 
-			String fecha, int pxIgual, int pixDiff, double porcentajePxDiff) {
+			String fecha, int pxIgual, int pixDiff, double porcentajePxDiff, int delta, int toleranciaRGB) {
         
         try {
         	//define un string con la fecha y hora
@@ -109,8 +111,8 @@ public class Utils {
                     .replaceAll("nombre", nombre)
                     .replaceAll("fecha", fechaYhora)
                     .replaceAll("PorcentajePxDiff", df.format(porcentajePxDiff))
-                    .replaceAll("delta", System.getenv("DELTA"))
-                    .replaceAll("toleranciaRGB", System.getenv("TOLERANCIA_RGB"));
+                    .replaceAll("delta", String.valueOf(delta))
+                    .replaceAll("toleranciaRGB", String.valueOf(toleranciaRGB));
             
             //crea un nuevo archivo File en la ruta path especificada como parametro de entrada
             File newHtmlFile = new File(path);
